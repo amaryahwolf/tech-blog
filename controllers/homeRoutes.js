@@ -52,7 +52,7 @@ router.get('/post/:id', async (req, res) => {
   }
 });
 
-router.get('/profile', withAuth, async (req, res) => {
+router.get('/dashboard', withAuth, async (req, res) => {
   try {
 
     const userData = await User.findByPk(req.session.user_id, {
@@ -79,6 +79,32 @@ router.get('/login', (req, res) => {
   }
 
   res.render('login');
+});
+
+// TODO: Add a GET route to get user's posts and render to dashboard
+router.get('/dashboard', async (req, res) => {
+  try {
+    const postData = await Post.findAll({
+      include: [
+        {
+          model: User,
+          attributes: ['name'],
+        },
+        { 
+          model: Comment
+        }
+      ],
+    });
+
+    const posts = postData.map((post) => post.get({ plain: true }));
+
+    res.render('dashboard', { 
+      posts, 
+      logged_in: req.session.logged_in 
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
 });
 
 module.exports = router;

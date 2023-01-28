@@ -9,13 +9,16 @@
      <li>{{comment_text}}<p>-{{user.name}}</p><p>{{format_date date_created}}</p></li>
     {{/each}}
   </ul>
+  {{!-- TODO: debug comment functionality --}}
+  {{#if logged_in}}
   <form>
-    <div>
-        <input type="hidden" id="show-id" value="{{post.id}}">
-        <textarea class="form-input" id="" name="" placeholder="Write a comment!"></textarea>
+    <div id="comment-container">
+        <input type="hidden" id="post-id" value="{{post.id}}">
+        <textarea class="form-input" id="comment-input" name="comment-input" placeholder="Write a comment!"></textarea>
         <button type="submit" class="btn">Submit</button>
     </div>
   </form>
+  {{/if}}
 </div>
 
 <script src="/js/comment.js"></script>

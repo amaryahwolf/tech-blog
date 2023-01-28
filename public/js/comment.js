@@ -3,7 +3,7 @@ const containerEl = document.getElementById('comment-container');
 const clickHandler = async (event) => {
 event.preventDefault();
 
-const post_id = document.querySelector("#post-id").value.trim();
+const post_id = document.querySelector("#post-id")
 const comment_text = document.querySelector("#comment-input").value.trim();
   
 if (event.target.matches('button')) {
@@ -22,3 +22,5 @@ if (response.ok) {
         }
     }
 };
+  
+containerEl.addEventListener('click', clickHandler);

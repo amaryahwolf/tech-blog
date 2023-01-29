@@ -1,3 +1,4 @@
+// Create fetch request for post DELETE route
 const delButtonHandler = async (event) => {
     if (event.target.hasAttribute('data-id')) {
       const id = event.target.getAttribute('data-id');
@@ -5,8 +6,6 @@ const delButtonHandler = async (event) => {
       const response = await fetch(`/api/posts/${id}`, {
         method: 'DELETE',
       });
-      const result = await response.json()
-      console.log(result)
       if (response.ok) {
         document.location.replace('/dashboard');
       } else {

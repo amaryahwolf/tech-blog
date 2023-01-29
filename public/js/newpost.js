@@ -1,3 +1,4 @@
+// Create fetch request to create new post
 const newFormHandler = async (event) => {
     event.preventDefault();
   

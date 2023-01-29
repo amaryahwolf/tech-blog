@@ -2,6 +2,7 @@ const router = require('express').Router();
 const { Post, User, Comment } = require('../models');
 const withAuth = require('../utils/auth');
 
+// GET route to read all posts and display posts and comments on homepage
 router.get('/', async (req, res) => {
   try {
     const postData = await Post.findAll({
@@ -27,6 +28,7 @@ router.get('/', async (req, res) => {
   }
 });
 
+// GET route to read post by id and display post and comments on 'post' page
 router.get('/post/:id', withAuth, async (req, res) => {
   try {
     const postData = await Post.findByPk(req.params.id, {
@@ -42,7 +44,6 @@ router.get('/post/:id', withAuth, async (req, res) => {
     });
 
     const post = postData.get({ plain: true });
-    // console.log(post);
 
     res.render('post', {
       ...post,
@@ -53,6 +54,7 @@ router.get('/post/:id', withAuth, async (req, res) => {
   }
 });
 
+// GET route to render 'newpost' page
 router.get('/newpost', withAuth, async (req, res) => {
   try {
 
@@ -72,6 +74,28 @@ router.get('/newpost', withAuth, async (req, res) => {
   }
 });
 
+// TODO: debug update post functionality
+// GET route to render 'updatepost' page
+router.get('/updatepost', withAuth, async (req, res) => {
+  try {
+
+    const userData = await User.findByPk(req.session.user_id, {
+      attributes: { exclude: ['password'] },
+      include: [{ model: Post }],
+    });
+
+    const user = userData.get({ plain: true });
+
+    res.render('updatepost', {
+      ...user,
+      logged_in: true
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+// GET route to render 'login' page
 router.get('/login', (req, res) => {
   // If the user is already logged in, redirect the request to another route
   if (req.session.logged_in) {
@@ -82,7 +106,7 @@ router.get('/login', (req, res) => {
   res.render('login');
 });
 
-// TODO: Add a GET route to get user's posts and render to dashboard
+// GET route to render users' posts on 'dashboard' page
 router.get('/dashboard', withAuth, async (req, res) => {
   try {
     const postData = await Post.findAll({

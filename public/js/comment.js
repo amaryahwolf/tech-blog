@@ -1,3 +1,4 @@
+// Create fetch request for comment POST route
 const submitBtn = document.getElementById('submit-btn');
 
 const clickHandler = async (event) => {
@@ -8,7 +9,6 @@ const clickHandler = async (event) => {
     // Grab last index of array (i.e. post number)
     const post_id = url[url.length - 1];
     const comment_text = document.querySelector("#comment-input").value.trim();
-    console.log(post_id);
 
     if (comment_text) {
         const response = await fetch(`/api/comments`, {

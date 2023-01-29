@@ -1,27 +1,28 @@
 <div class="row">
   <div class="col-auto">
-    {{!-- TODO: debug name grab --}}
-    <h2>Welcome, {{name}}!</h2>
+    <h2>Welcome, {{username}}!</h2>
   </div>
   <a href="/newpost"><button>Add a New Blog Post!</button></a>
 </div>
-
- {{#if posts.length}}
-  <div class="col-md-6 post-list">
+  <div class="col-md-6">
     <h3>My Blog Posts:</h3>
-
+    {{#if posts.length}}
     {{#each posts as |post|}}
     <div class="row mb-2">
       <div class="col-md-8">
         <h4><a href="/post/{{post.id}}">{{post.title}}</a></h4>
       </div>
       <div class="col-md-4">
-        <button class="btn btn-sm btn-danger" data-id="{{project.id}}">DELETE</button>
+        <button class="btn btn-sm btn-danger delete-btn" data-id="{{post.id}}">DELETE</button>
       </div>
     </div>
     {{/each}}
   </div>
+  {{else}}
+  <p>No posts written. Add one above!</p>
   {{/if}}
 </div>
+
+<script src="/js/dashboard.js"></script>
 
 

@@ -11,7 +11,7 @@ router.get('/', async (req, res) => {
           attributes: ['name'],
         },
         { 
-          model: Comment
+          model: Comment, include: [{model: User}]
         }
       ],
     });
@@ -36,12 +36,13 @@ router.get('/post/:id', withAuth, async (req, res) => {
           attributes: ['name'],
         },
         {
-          model: Comment
+          model: Comment, include: [{model: User}]
         }
       ],
     });
 
     const post = postData.get({ plain: true });
+    // console.log(post);
 
     res.render('post', {
       ...post,
@@ -74,7 +75,7 @@ router.get('/newpost', withAuth, async (req, res) => {
 router.get('/login', (req, res) => {
   // If the user is already logged in, redirect the request to another route
   if (req.session.logged_in) {
-    res.redirect('/profile');
+    res.redirect('/dashboard');
     return;
   }
 
@@ -85,6 +86,9 @@ router.get('/login', (req, res) => {
 router.get('/dashboard', withAuth, async (req, res) => {
   try {
     const postData = await Post.findAll({
+      where: {
+        user_id: req.session.user_id
+      },
       include: [
         {
           model: User,
@@ -100,7 +104,8 @@ router.get('/dashboard', withAuth, async (req, res) => {
 
     res.render('dashboard', { 
       posts, 
-      logged_in: req.session.logged_in 
+      logged_in: req.session.logged_in,
+      username: req.session.username 
     });
   } catch (err) {
     res.status(500).json(err);

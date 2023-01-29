@@ -5,20 +5,17 @@
   <p>Created by {{user.name}} on {{format_date date_created}}</p>
   <ul>
     {{#each comments as |comment| }}
-    {{!-- TODO: debug user.name --}}
      <li>{{comment_text}}<p>-{{user.name}}</p><p>{{format_date date_created}}</p></li>
     {{/each}}
   </ul>
-  {{!-- TODO: debug comment functionality --}}
-  {{#if logged_in}}
-  <form>
+  <form id="submit-btn">
     <div id="comment-container">
         <input type="hidden" id="post-id" value="{{post.id}}">
         <textarea class="form-input" id="comment-input" name="comment-input" placeholder="Write a comment!"></textarea>
-        <button type="submit" class="btn">Submit</button>
+        <button type="submit"  class="btn">Submit</button>
     </div>
   </form>
-  {{/if}}
+ 
 </div>
 
 <script src="/js/comment.js"></script>

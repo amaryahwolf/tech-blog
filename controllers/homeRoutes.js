@@ -76,12 +76,12 @@ router.get('/newpost', withAuth, async (req, res) => {
 
 // TODO: debug update post functionality
 // GET route to render 'updatepost' page
-router.get('/updatepost', withAuth, async (req, res) => {
+router.get('/updatepost/:id', withAuth, async (req, res) => {
   try {
 
-    const userData = await User.findByPk(req.session.user_id, {
-      attributes: { exclude: ['password'] },
-      include: [{ model: Post }],
+    const userData = await Post.findByPk(req.params.id, {
+      // attributes: { exclude: ['password'] },
+      include: [{ model: User }],
     });
 
     const user = userData.get({ plain: true });

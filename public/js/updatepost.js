@@ -2,21 +2,22 @@
 // Create fetch request for post UPDATE route
 const updateBtnHandler = async (event) => {
   event.preventDefault();
+  console.log('Listening')
 
-   const title = document.querySelector("#post-title").value.trim();
-   const content = document.querySelector("#post-content").value.trim();
+  const title = document.querySelector('#post-title').value.trim();
+  const content = document.querySelector('#post-content').value.trim();
 
   if (event.target.hasAttribute('data-id')) {
     const id = event.target.getAttribute('data-id');
-
-    if (title && content) {
-      const response = await fetch(`/api/posts/${id}`, {
-        method: 'PUT',
-        body: JSON.stringify({ title, content }),
+    console.log(id)
+    const response = await fetch(`/api/posts/${id}`, {
+      method: 'PUT',
+      body: JSON.stringify({ title, content }),
         headers: {
           'Content-Type': 'application/json',
         },
-      });
+    });
+    
 
     const result = await response.json()
     console.log(result)
@@ -27,9 +28,8 @@ const updateBtnHandler = async (event) => {
       alert('Failed to update post');
     }
   }
-}
 };
 
 document
   .querySelector('.update-post-form')
-  .addEventListener('submit', updateBtnHandler)
+  .addEventListener('submit', updateBtnHandler);

@@ -1,15 +1,15 @@
+<div class="card update-card">
 <form class="form update-post-form">
-    <div class="form-group">
-        <label for="post-title">Title:</label>
-        <input class="form-input" type="text" id="post-title" name="post-title" />
+    <div class="form-group mb-3">
+        <label for="post-title" class="form-label">Title:</label>
+        <input class="form-input" type="text" id="post-title" name="post-title" contenteditable="{{ post.title }}"/>
     </div>
-    <div class="form-group">
-        <label for="post-content">Content:</label>
-        <textarea class="form-input" id="post-content" name="post-content"></textarea>
-    </div>
-    <div class="form-group">
-        <button type="submit" class="btn btn-primary">Update</button>
-    </div>
+    <div class="form-group mb-3">
+        <label for="post-content" class="form-label">Content:</label>
+        <textarea class="form-input" id="post-content" name="post-content" contenteditable="{{ post.content }}"></textarea>
+    </div>   
+        <button type="submit" class="btn">Update</button>
 </form>
+</div>
 
 <script src="/js/updatepost.js"></script>

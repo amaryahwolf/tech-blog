@@ -1,21 +1,25 @@
 {{!-- View for post/:id --}}
-<div class="text-center">
-  <h2>{{title}}</h2>
-  <p>{{{content}}}</p>
-  <p>Created by {{user.name}} on {{format_date date_created}}</p>
-  <ul>
+<div class="d-flex justify-content-center m-5 post-card card">
+ <div class="card-body">
+  <h5 class="card-title">{{title}}</h5>
+  <h6 class="card-subtitle mb-2 text-muted">Written by {{user.name}} on {{format_date date_created}}</h6>
+  <p class="card-text">{{content}}</p>
+  <div class="comment-card">
+  <ul class="list-group-flush">
     {{#each comments as |comment| }}
-     <li>{{comment_text}}<p>-{{user.name}}</p><p>{{format_date date_created}}</p></li>
+     <li class="list-group-item">{{comment_text}}<p>-{{user.name}}</p><p>{{format_date date_created}}</p></li>
     {{/each}}
   </ul>
+  </div>
+  <div>
   <form id="submit-btn">
     <div id="comment-container">
         <input type="hidden" id="post-id" value="{{post.id}}">
-        <textarea class="form-input" id="comment-input" name="comment-input" placeholder="Write a comment!"></textarea>
-        <button type="submit"  class="btn">Submit</button>
+        <textarea class="form-input comment-form" id="comment-input" name="comment-input" placeholder="Write a comment!"></textarea>
+        <button type="submit"  class="btn comment-btn">Submit</button>
     </div>
   </form>
- 
+ </div>
 </div>
 
 <script src="/js/comment.js"></script>

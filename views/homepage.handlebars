@@ -1,26 +1,20 @@
 {{!-- View for homepage --}}
+<div class="row m-5 post-card card">
 {{#each posts as |post| }}
-<div class="row mb-4 project">
-  <div class="col-md-5">
-    <h2>
-      <a href="/post/{{post.id}}">{{post.title}}</a>
-    </h2>
-    <p>Written by {{post.user.name}} on {{format_date post.date_created}}</p>
+  <div class="card-body">
+    <h5 class="card-title"><a href="/post/{{post.id}}">{{post.title}}</a></h5>
+    <h6 class="card-subtitle mb-2 text-muted">Written by {{post.user.name}} on {{format_date post.date_created}}</h6>
+    <p class="card-text">{{post.content}}</p>
   </div>
-  <div class="col-md-7">
-    <p>
-      {{post.content}}
-    </p>
-  </div>
-  <div>
-    <ul>
-    {{#each comments as |comment| }}
+  {{#each comments as |comment| }}
+  <div class="comment-card">
+    <ul class="list-group-flush">  
     {{!-- TODO: debug user.name --}}
-     <li>{{comment_text}}<p>-{{user.name}}</p><p>{{format_date date_created}}</p></li>
-    {{/each}}
+     <li class="list-group-item">{{comment_text}}<p>-{{user.name}}</p><p>{{format_date date_created}}</p></li> 
     </ul>
   </div>
-</div>
+  {{/each}}
 {{/each}}
+</div>
 
 <script src="/js/comment.js"></script>

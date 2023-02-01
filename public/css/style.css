@@ -16,7 +16,7 @@ card-body a:link {
 }
 
 a {
-    color: white;
+    color: black;
 }
 
 .card {
@@ -24,17 +24,17 @@ a {
 }
 
 .post-card {
-    background: #cafe4897;   
+    /* background: #cafe4897;    */
     width: 50%;
     justify-content: center;
 }
 
 .comment-card {
     padding-top: 5px;
-    background: #cafe4897;
+    /* background: #cafe4897;
     border-color:#7cb4b8;
     border-width: 5px;
-    border-style: solid;  
+    border-style: solid;   */
 }
 
 .comment-card p {

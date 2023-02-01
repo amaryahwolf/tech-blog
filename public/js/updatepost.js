@@ -6,8 +6,9 @@ const updateBtnHandler = async (event) => {
 
   const title = document.querySelector('#post-title').value.trim();
   const content = document.querySelector('#post-content').value.trim();
-
+  console.log(event.target)
   if (event.target.hasAttribute('data-id')) {
+  
     const id = event.target.getAttribute('data-id');
     console.log(id)
     const response = await fetch(`/api/posts/${id}`, {

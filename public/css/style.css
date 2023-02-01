@@ -1,40 +1,36 @@
 :root {
-    --dark: #524948;
-    --purple: #57467B;
-    --blue: #7CB4b8;
-    --aqua: #70f8ba;
-    --lime: #cafe48;
+    --dark: #373F51;
+    --lt-blue: #a9bcd0;
+    --dk-blue: #58a4b0;
+    --pink: #daa49a;
+    --light: #d8dbe2;
 }
 
 body {
-    background: linear-gradient(#7CB4b8, #70f8ba);
-    height: 100vh;
+    background: linear-gradient(#373F51, #a9bcd0);
+    height: 100%;
+    font-family: 'Inter', sans-serif;
 }
 
-card-body a:link {
-    color: black;
+nav {
+    background: var(--light);
+}
+
+nav a {
+    margin: 5px;
 }
 
 a {
     color: black;
 }
 
-.card {
-    display: flex;
-}
 
 .post-card {
-    /* background: #cafe4897;    */
     width: 50%;
-    justify-content: center;
 }
 
 .comment-card {
     padding-top: 5px;
-    /* background: #cafe4897;
-    border-color:#7cb4b8;
-    border-width: 5px;
-    border-style: solid;   */
 }
 
 .comment-card p {
@@ -46,8 +42,8 @@ a {
     margin-top: 8px;
 }
 
-.comment-btn:hover {
-    background-color: var(--blue);
+.btn:hover {
+    background: var(--blue);
     border-style: solid;
     border-width: 2px;
     border-color: (var--dark);
@@ -55,28 +51,31 @@ a {
 
 .dashboard-card {
     width: 50%;
-    background:#57467B;
-    color: white;
+    background: var(--light);
+    color: black;
+    text-align: center;
+    margin-top: 100px;
+    padding: 50px;
 }
 
 .btn {
     border-style: solid;
     border-width: 2px;
-    border-color: #cafe48;
+    background: var(--pink);
     color: white;
     margin: 5px;
 }
 
 .update-card {
     width: 50%;
-    background:#57467B;
-    color: white;
+    background: var(--light);
+    color: black;
 }
 
 .new-card {
     width: 50%;
-    background:#57467B;
-    color: white;
+    background: var(--light);
+    color: black;
 }
 
 .form-input {

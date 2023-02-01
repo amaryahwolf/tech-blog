@@ -1,16 +1,17 @@
-<div class="card card-body dashboard-card">
+<div class="d-flex justify-content-center w-auto align-items-center">
+<div class="dashboard-card">
 <div class="row">
-  <div class="col-auto">
+  <div>
     <h3>Welcome, {{username}}!</h3>
   </div>
   <a href="/newpost"><button class="btn">Add a New Blog Post!</button></a>
 </div>
-  <div class="col-md-6">
+  <div>
     <h4>My Blog Posts:</h4>
     {{#if posts.length}}
     {{#each posts as |post|}}
     <div class="row mb-2">
-        <div class="col-md-8">
+        <div>
         <h5><a href="/post/{{post.id}}">{{post.title}}</a></h5>
         <a href="/updatepost/{{post.id}}"><button class="btn btn-sm update-btn" data-id="{{post.id}}">UPDATE</button></a>
         <button class="btn btn-sm delete-btn" data-id="{{post.id}}">DELETE</button>
@@ -21,6 +22,7 @@
   {{else}}
   <p>No posts written. Add one above!</p>
   {{/if}}
+</div>
 </div>
 </div>
 

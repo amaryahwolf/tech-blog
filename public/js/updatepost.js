@@ -8,17 +8,17 @@ const updateBtnHandler = async (event) => {
   const content = document.querySelector('#post-content').value.trim();
   console.log(event.target)
   if (event.target.hasAttribute('data-id')) {
-  
+
     const id = event.target.getAttribute('data-id');
     console.log(id)
     const response = await fetch(`/api/posts/${id}`, {
       method: 'PUT',
       body: JSON.stringify({ title, content }),
-        headers: {
-          'Content-Type': 'application/json',
-        },
+      headers: {
+        'Content-Type': 'application/json',
+      },
     });
-    
+
 
     const result = await response.json()
     console.log(result)

@@ -11,17 +11,17 @@ router.get('/', async (req, res) => {
           model: User,
           attributes: ['name'],
         },
-        { 
-          model: Comment, include: [{model: User}]
+        {
+          model: Comment, include: [{ model: User }]
         }
       ],
     });
 
     const posts = postData.map((post) => post.get({ plain: true }));
 
-    res.render('homepage', { 
-      posts, 
-      logged_in: req.session.logged_in 
+    res.render('homepage', {
+      posts,
+      logged_in: req.session.logged_in
     });
   } catch (err) {
     res.status(500).json(err);
@@ -38,7 +38,7 @@ router.get('/post/:id', withAuth, async (req, res) => {
           attributes: ['name'],
         },
         {
-          model: Comment, include: [{model: User}]
+          model: Comment, include: [{ model: User }]
         }
       ],
     });
@@ -118,7 +118,7 @@ router.get('/dashboard', withAuth, async (req, res) => {
           model: User,
           attributes: ['name'],
         },
-        { 
+        {
           model: Comment
         }
       ],
@@ -126,10 +126,10 @@ router.get('/dashboard', withAuth, async (req, res) => {
 
     const posts = postData.map((post) => post.get({ plain: true }));
 
-    res.render('dashboard', { 
-      posts, 
+    res.render('dashboard', {
+      posts,
       logged_in: req.session.logged_in,
-      username: req.session.username 
+      username: req.session.username
     });
   } catch (err) {
     res.status(500).json(err);

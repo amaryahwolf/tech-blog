@@ -1,31 +1,30 @@
 <div class="d-flex justify-content-center w-auto align-items-center">
-<div class="dashboard-card">
-<div class="row">
-  <div>
-    <h3>Welcome, {{username}}!</h3>
-  </div>
-  <a href="/newpost"><button class="btn">Add a New Blog Post!</button></a>
-</div>
-  <div>
-    <h4>My Blog Posts:</h4>
-    {{#if posts.length}}
-    {{#each posts as |post|}}
-    <div class="row mb-2">
-        <div>
-        <h5><a href="/post/{{post.id}}">{{post.title}}</a></h5>
-        <a href="/updatepost/{{post.id}}"><button class="btn btn-sm update-btn" data-id="{{post.id}}">UPDATE</button></a>
-        <button class="btn btn-sm delete-btn" data-id="{{post.id}}">DELETE</button>
+  <div class="dashboard-card">
+    <div class="row">
+      <div>
+        <h3>Welcome, {{username}}!</h3>
       </div>
+      <a href="/newpost"><button class="btn">Add a New Blog Post!</button></a>
     </div>
-    {{/each}}
+    <div>
+      <h4>My Blog Posts:</h4>
+      {{#if posts.length}}
+      {{#each posts as |post|}}
+      <div class="row mb-2">
+        <div>
+          <h5><a href="/post/{{post.id}}">{{post.title}}</a></h5>
+          <a href="/updatepost/{{post.id}}"><button class="btn btn-sm update-btn"
+              data-id="{{post.id}}">UPDATE</button></a>
+          <button class="btn btn-sm delete-btn" data-id="{{post.id}}">DELETE</button>
+        </div>
+      </div>
+      {{/each}}
+    </div>
+    {{else}}
+    <p>No posts written. Add one above!</p>
+    {{/if}}
   </div>
-  {{else}}
-  <p>No posts written. Add one above!</p>
-  {{/if}}
-</div>
 </div>
 </div>
 
 <script src="/js/dashboard.js"></script>
-
-

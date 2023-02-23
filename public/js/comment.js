@@ -18,8 +18,8 @@ const clickHandler = async (event) => {
                 "Content-Type": "application/json",
             },
         });
-const result = await response.json()
-    console.log(result)
+        const result = await response.json()
+        console.log(result)
 
         if (response.ok) {
             document.location.reload();

@@ -52,15 +52,15 @@ router.put('/:id', withAuth, async (req, res) => {
       title: req.body.title,
       content: req.body.content
     },
-    {
-      where: {
-        id: req.params.id
-      } 
-    }
+      {
+        where: {
+          id: req.params.id
+        }
+      }
     );
 
     res.status(200).json(updatedPost);
-    
+
   } catch (err) {
     console.log(err)
     res.status(400).json(err);
